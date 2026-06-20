@@ -5,6 +5,7 @@
 I build end-to-end data products: from an AI candidate-ranking engine to churn models, portfolio optimizers, and BigQuery analytics. Google Data Analytics certified, and currently interning in AI & Data Analytics with IBM SkillsBuild.
 
 🔭 **Open to** Data Science / Machine Learning / AI Engineering / Data Analyst internships & entry-level roles
+
 📫 **Reach me:** harshkamat.2307@gmail.com · [LinkedIn](https://www.linkedin.com/in/harshkamat/)
 
 ---
