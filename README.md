@@ -13,9 +13,13 @@ I build end-to-end data products: from an AI candidate-ranking engine to churn m
 ### 🛠️ Tech Stack
 
 **Languages:** Python, SQL
+
 **ML & Data Science:** scikit-learn · Pandas · NumPy · EDA · Classification · Feature Engineering · Monte Carlo Simulation · NLP
+
 **Visualization & BI:** Power BI · Tableau · Matplotlib · Seaborn
+
 **Cloud & Data:** Google BigQuery · Google Sheets
+
 **Tools:** Git · GitHub · Jupyter · Google Colab · VS Code
 
 ---
