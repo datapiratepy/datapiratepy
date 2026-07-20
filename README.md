@@ -36,11 +36,4 @@ I build **production-grade AI applications** — LLM systems that actually ship,
 - **IBM SkillsBuild AI & Cloud Intern** (Edunet Foundation × AICTE) — built NutriMind AI
 - **Redrob × Hack2Skill INDIA.RUNS Data & AI Challenge** — built Redrob Ranker
 
----
-
-![Harsh's GitHub stats](https://github-readme-stats.vercel.app/api?username=datapiratepy&show_icons=true&hide_border=true)
-![Top languages](https://github-readme-stats.vercel.app/api/top-langs/?username=datapiratepy&layout=compact&hide_border=true)
-
----
-
 *"I build real AI systems, end to end — and engineer them properly."*
