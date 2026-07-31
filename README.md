@@ -6,144 +6,89 @@ Bengaluru, India · [Portfolio](https://harshkamat.vercel.app) · [LinkedIn](htt
 
 ---
 
-## About
+## Featured Work
 
-I am in my final year of a B.E. in Computer Science Engineering at AMC Engineering College, Bengaluru (2023–2027). My work sits at the application layer of AI: taking language models, retrieval and classical ML, and building software around them that can be tested, explained and re-run.
-
-Most of what I build is deliberately boring in the right places. Citations are constructed in code rather than generated, so a model cannot invent a source. Ranking logic is deterministic, so the same input produces byte-identical output. Nutrition figures are computed in Python, not asked of an LLM. I would rather ship something a reviewer can verify than something that demos well once.
-
-I completed the IBM SkillsBuild AI & Cloud internship (Edunet Foundation, AICTE) in 2026, and I hold the Google Data Analytics Professional Certificate.
+- **[NutriMind AI](https://github.com/datapiratepy/NutriMind-AI)** — RAG assistant on IBM watsonx.ai
+- **[Redrob Ranker](https://github.com/datapiratepy/redrob-ranker)** — deterministic candidate ranking
+- **[Customer Churn Analysis](https://github.com/datapiratepy/customer-churn-analysis)** — churn classification + Power BI
+- **[Financial Markets Analytics](https://github.com/datapiratepy/financial-markets-analytics)** — Monte Carlo optimization
+- **[Climate & Energy Analytics](https://github.com/datapiratepy/climate-energy-analytics)** — SQL on BigQuery
 
 ---
 
-## What I enjoy building
+## About
 
-- **Retrieval systems that stay honest** — chunking, embeddings, similarity thresholds, and the plumbing that makes a citation traceable to a page rather than plausible-sounding.
-- **Deterministic engines** — scoring and ranking logic where every output can be explained from the input, and repeated runs agree exactly.
-- **The engineering around the model** — REST APIs, streaming responses, configuration that fails fast, automated tests, and CI that runs without secrets.
-- **Analysis that admits its limits** — I would rather state that a chart shows an apparent relationship than claim a correlation I never computed.
+Final-year B.E. Computer Science Engineering student in Bengaluru. My work sits at the application layer of AI: taking language models, retrieval and classical ML, and building software around them that can be tested, explained and re-run.
+
+Most of what I build is deliberately boring in the right places. Citations are constructed in code rather than generated, so a model cannot invent a source. Ranking logic is deterministic, so the same input produces byte-identical output. I would rather ship something a reviewer can verify than something that demos well once.
+
+IBM SkillsBuild AI & Cloud intern (2026). Google-certified Data Analyst.
 
 ---
 
 ## Current focus
 
-- Deepening Python and data-structures fundamentals for technical interviews.
-- SQL beyond aggregation — joins, window functions, query plans.
-- Machine-learning evaluation: thresholds, class imbalance, cross-validation.
-- Strengthening test coverage and CI practice across my existing projects.
+- Data structures and algorithms for interviews
+- SQL beyond aggregation — joins, window functions, query plans
+- ML evaluation: thresholds, imbalance, cross-validation
 
 ---
 
 ## Technical skills
 
-**Languages** — Python, SQL, JavaScript (basic), HTML/CSS
-
-**Generative AI and LLMs** — IBM watsonx.ai, IBM Granite models, Retrieval-Augmented Generation, ChromaDB, embeddings, agent routing and orchestration, prompt engineering
-
-**Machine learning and data** — scikit-learn, Pandas, NumPy, exploratory data analysis, classification, model evaluation, class imbalance, feature encoding and scaling, Monte Carlo simulation
-
-**Backend and engineering** — Flask, REST APIs, SQLAlchemy, Server-Sent Events, pytest, GitHub Actions CI/CD, Git
-
-**Data and BI** — Google BigQuery, SQLite, Power BI, DAX, Matplotlib, Seaborn
-
-**Tools and cloud** — IBM Cloud, Jupyter, Google Colab, VS Code
+**Languages** — Python, SQL, JavaScript, HTML/CSS
+**AI & LLMs** — IBM watsonx.ai, Granite, RAG, ChromaDB, embeddings, prompt engineering, agent routing
+**ML & data** — scikit-learn, Pandas, NumPy, EDA, classification, model evaluation, class imbalance, Monte Carlo
+**Backend & quality** — Flask, REST APIs, SQLAlchemy, SSE, pytest, GitHub Actions, Git
+**Data & BI** — Google BigQuery, SQLite, Power BI, DAX, Matplotlib, Seaborn
+**Web & tools** — Next.js, TypeScript, Tailwind, IBM Cloud, Jupyter, Colab, VS Code
 
 ---
 
 ## Featured projects
 
-### [NutriMind AI](https://github.com/datapiratepy/NutriMind-AI) — retrieval-grounded nutrition assistant
+### [NutriMind AI](https://github.com/datapiratepy/NutriMind-AI)
 
-A Flask application built on IBM watsonx.ai Granite models. A Coordinator routes each request to one of four specialist handlers — deterministic regex rules first at zero token cost, Granite JSON classification only for the ambiguous tail.
+A Flask app on IBM watsonx.ai Granite models that answers nutrition questions from documents you upload. Retrieval is citation-backed: the citation list is assembled in Python from stored metadata, so the model cannot fabricate a source. Built during my IBM SkillsBuild internship, with 156 automated tests at 88% coverage in CI.
 
-The RAG pipeline runs over user-uploaded PDFs with page-bounded overlapping chunks (800 characters, 120 overlap), ChromaDB cosine search at top-k 5, and a 0.35 similarity threshold below which an answer is explicitly labelled general knowledge rather than presented as evidence. Citations are assembled in Python from chunk metadata, so the model cannot fabricate a source.
+`Python` `IBM watsonx.ai` `Granite` `RAG` `ChromaDB` `Flask` `pytest`
 
-Nutrition figures — Mifflin-St Jeor BMR and TDEE, macro targets, an 85-food composition table, and a 0–100 health score — are computed in Python, never generated by the model.
+### [Redrob Ranker](https://github.com/datapiratepy/redrob-ranker)
 
-156 automated tests at 88% coverage run in GitHub Actions with no credentials required, across 36 endpoints, SSE token streaming, and a three-tier embedding stack (Granite live, sentence-transformers, or a deterministic hash provider offline).
-
-`Python` `IBM watsonx.ai` `RAG` `ChromaDB` `Flask` `SSE` `pytest`
-
-### [Redrob Ranker](https://github.com/datapiratepy/redrob-ranker) — interpretable deterministic candidate-ranking engine
-
-Built for the Redrob × Hack2Skill INDIA.RUNS Data & AI Challenge. Ranks the top 100 candidates from a 100,000-profile pool against a Senior AI Engineer job description, inside hard constraints of five minutes wall-clock, 16 GB RAM, CPU only and no network access.
-
-Measured at a 39.4-second mean and roughly 21 MB peak memory on the full pool, by streaming the 465 MB JSONL dataset in two passes with a generator rather than loading it. Output is byte-identical across repeated runs and across operating systems.
-
-Five interpretable scoring components — career evidence, title, corroboration-gated skills, experience and location — with multiplicative rule-based penalties and four career-arithmetic consistency checks that excluded all planted decoy profiles. Every ranked candidate gets a justification generated from verified profile facts, with a mechanical verifier that cross-checks each cited company against the source record and aborts the run on any mismatch.
-
-**There is no machine-learning model here, by design.** Embeddings were evaluated and rejected during development; the reasoning is documented in the repository.
+Ranks the top 100 of a 100,000-profile pool against a job description, on CPU alone and in under a minute — built for the Redrob × Hack2Skill INDIA.RUNS challenge. Scoring is interpretable and fully deterministic: every placement is explainable from the input, and repeated runs are byte-identical. No machine-learning model in it, by design; embeddings were evaluated and rejected, with the reasoning documented.
 
 `Python` `Algorithm Design` `Feature Engineering` `Deterministic Systems`
 
-### [Customer Churn Analysis](https://github.com/datapiratepy/customer-churn-analysis) — classification and retention analytics
+### [Customer Churn Analysis](https://github.com/datapiratepy/customer-churn-analysis)
 
-A logistic-regression churn workflow on 7,032 Telco records (26.6% churn): cleaning, one-hot encoding, train/test split, and feature scaling fitted on the training split only. Class balancing raised churn-class recall from 0.52 to 0.79, accepting the precision trade-off (0.50, F1 0.61) because a missed churner costs more than a false alarm.
-
-The repository also documents a defect I found in my own pipeline: an encoding-order error had expanded a customer identifier into 7,031 dummy columns, inflating the feature matrix from 30 to 7,061. Fixing it re-established the model's true drivers — contract type, tenure, fiber service and electronic-check payment — which are presented in a Power BI dashboard.
+A logistic-regression churn classifier on 7,032 Telco records — cleaning, one-hot encoding, and scaling fitted on the training split only. Class balancing raised churn-class recall from 0.52 to 0.79 at 0.50 precision, a trade made deliberately for a retention use case. Results ship as a Power BI dashboard.
 
 `Python` `scikit-learn` `Pandas` `Power BI` `DAX`
 
-### [Financial Markets Analytics](https://github.com/datapiratepy/financial-markets-analytics) — portfolio optimization
+### [Financial Markets Analytics](https://github.com/datapiratepy/financial-markets-analytics)
 
-5,000 Monte Carlo portfolio simulations over eight years of AAPL, MSFT, GOOGL and AMZN data (2018–2025, 2,011 trading days), improving the Sharpe ratio from 0.87 to 0.92 and visualising the Efficient Frontier using Modern Portfolio Theory. Method limitations are stated in the README.
+5,000 Monte Carlo simulations across eight years of AAPL, MSFT, GOOGL and AMZN data (2018–2025, 2,011 trading days), improving the Sharpe ratio from 0.87 to 0.92 and plotting the Efficient Frontier.
 
 `Python` `Pandas` `NumPy` `Matplotlib`
 
-### [Climate & Energy Analytics](https://github.com/datapiratepy/climate-energy-analytics) — SQL and BigQuery
+### [Climate & Energy Analytics](https://github.com/datapiratepy/climate-energy-analytics)
 
-Querying a large Our World in Data emissions table in Google BigQuery: filtering, aggregation by decade, and a scalar subquery for top emitters, with GDP-versus-emissions comparisons visualised in Power BI. The README is explicit that this project uses no joins, CTEs or window functions, and that the GDP relationship is a visual comparison rather than a computed correlation.
+SQL analysis of global CO₂ emissions in BigQuery using Our World in Data — filtering, decade aggregation and a scalar subquery for top emitters, with GDP-versus-emissions comparisons in Power BI — a visual comparison, not a computed correlation.
 
 `SQL` `Google BigQuery` `Power BI`
 
 ---
 
-## Technologies
-
-**AI/ML** IBM watsonx.ai · IBM Granite · ChromaDB · scikit-learn · Pandas · NumPy
-**Backend** Python · Flask · SQLAlchemy · REST · Server-Sent Events · SQLite
-**Quality** pytest · GitHub Actions · Git
-**Data** Google BigQuery · Power BI · DAX · Matplotlib · Seaborn
-**Web** Next.js · TypeScript · Tailwind CSS (portfolio site)
-
----
-
-## Certifications and programmes
+## Certifications
 
 - **Google Data Analytics Professional Certificate** — Google / Coursera, 2025
-- **IBM SkillsBuild AI & Cloud Internship** — Edunet Foundation with AICTE, Jun–Jul 2026
+- **IBM SkillsBuild AI & Cloud Internship** — Edunet Foundation with AICTE, 2026
 - **Redrob × Hack2Skill INDIA.RUNS Data & AI Challenge** — 2026
-
----
 
 ## Education
 
 **B.E., Computer Science Engineering** — AMC Engineering College, Bengaluru · 2023–2027
 
----
-
 ## Open to opportunities
 
-I am looking for **AI/ML, Generative AI, Data Science and Python engineering internships**, and **entry-level or graduate software engineering roles** starting 2027. Open to Bengaluru and remote.
-
-- Portfolio — [harshkamat.vercel.app](https://harshkamat.vercel.app)
-- LinkedIn — [linkedin.com/in/harshkamat](https://www.linkedin.com/in/harshkamat/)
-- Email — harshkamat.2307@gmail.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Looking for **AI/ML, Generative AI, Data Science and Python engineering internships**, and **graduate software engineering roles** from 2027. Bengaluru or remote.
