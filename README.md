@@ -37,10 +37,15 @@ IBM SkillsBuild AI & Cloud intern (2026). Google-certified Data Analyst.
 ## Technical skills
 
 **Languages** — Python, SQL, JavaScript, HTML/CSS
+
 **AI & LLMs** — IBM watsonx.ai, Granite, RAG, ChromaDB, embeddings, prompt engineering, agent routing
+
 **ML & data** — scikit-learn, Pandas, NumPy, EDA, classification, model evaluation, class imbalance, Monte Carlo
+
 **Backend & quality** — Flask, REST APIs, SQLAlchemy, SSE, pytest, GitHub Actions, Git
+
 **Data & BI** — Google BigQuery, SQLite, Power BI, DAX, Matplotlib, Seaborn
+
 **Web & tools** — Next.js, TypeScript, Tailwind, IBM Cloud, Jupyter, Colab, VS Code
 
 ---
