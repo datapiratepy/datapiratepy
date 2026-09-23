@@ -35,13 +35,12 @@ rather than by the model. [Live demo](https://nutrimind-ai-0rby.onrender.com).
 
 `Python` `Flask` `IBM watsonx.ai` `Granite` `RAG` `ChromaDB` `SQLAlchemy` `PostgreSQL` `Docker` `pytest`
 
-### [VeriQA](https://github.com/datapiratepy/veriqa) · selective question answering · VTU team project
+### [VeriQA](https://github.com/datapiratepy/veriqa) · selective question answering · VTU major project
 
 A CPU-only question-answering system that declines to answer when its calibrated risk of
-being wrong is too high, built with Harsh Ranjan and Manish Kumar. **My part** was the
-extractive reader and the reliability layer: 16 retrieval, reader and cross-passage
-agreement signals, a gradient-boosted risk model with isotonic calibration, and the
-baselines it is measured against.
+being wrong is too high. **My part** was the extractive reader and the reliability layer:
+16 retrieval, reader and cross-passage agreement signals, a gradient-boosted risk model
+with isotonic calibration, and the baselines it is measured against.
 
 - Adding retrieval and agreement signals to a reader-only calibrator raised
   error-prediction ROC-AUC from 0.524 to 0.639 on 3,585 held-out SQuAD 2.0 questions; the
