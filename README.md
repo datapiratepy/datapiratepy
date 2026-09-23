@@ -1,99 +1,100 @@
 # Harsh Kamat
 
-**Final-year Computer Science Engineering student. I build AI-powered software in Python — retrieval systems, machine-learning workflows, and the APIs and tests around them.**
+**Final-year Computer Science Engineering student building applied AI systems in Python:
+retrieval-augmented LLM applications, ML evaluation, and the backend engineering, testing
+and deployment around them.**
 
-Bengaluru, India · [Portfolio](https://harshkamat.vercel.app) · [LinkedIn](https://www.linkedin.com/in/harshkamat/) · harshkamat.2307@gmail.com
+Bengaluru, India · [Portfolio](https://harshkamat.vercel.app) ·
+[LinkedIn](https://www.linkedin.com/in/harshkamat/) · harshkamat.2307@gmail.com
 
----
+Open to **AI/ML engineering internships**, and to **entry-level roles from 2027**, in applied
+and generative AI, retrieval and RAG, and AI backend systems. Bengaluru or remote.
 
-## Featured Work
-
-- **[NutriMind AI](https://github.com/datapiratepy/NutriMind-AI)** — RAG assistant on IBM watsonx.ai
-- **[Redrob Ranker](https://github.com/datapiratepy/redrob-ranker)** — deterministic candidate ranking
-- **[Customer Churn Analysis](https://github.com/datapiratepy/customer-churn-analysis)** — churn classification + Power BI
-- **[Financial Markets Analytics](https://github.com/datapiratepy/financial-markets-analytics)** — Monte Carlo optimization
-- **[Climate & Energy Analytics](https://github.com/datapiratepy/climate-energy-analytics)** — SQL on BigQuery
-
----
-
-## About
-
-Final-year B.E. Computer Science Engineering student in Bengaluru. My work sits at the application layer of AI: taking language models, retrieval and classical ML, and building software around them that can be tested, explained and re-run.
-
-Most of what I build is deliberately boring in the right places. Citations are constructed in code rather than generated, so a model cannot invent a source. Ranking logic is deterministic, so the same input produces byte-identical output. I would rather ship something a reviewer can verify than something that demos well once.
-
-IBM SkillsBuild AI & Cloud intern (2026). Google-certified Data Analyst.
+I prefer systems a reviewer can check: citations assembled in code instead of generated,
+arithmetic kept out of the model, and results reported together with the checks they failed.
 
 ---
 
-## Current focus
+## Selected work
 
-- Data structures and algorithms for interviews
-- SQL beyond aggregation — joins, window functions, query plans
-- ML evaluation: thresholds, imbalance, cross-validation
+### [NutriMind AI](https://github.com/datapiratepy/NutriMind-AI) · RAG application on IBM watsonx.ai
 
----
+A multi-user nutrition assistant that answers from each user's own PDFs. Citations are
+built from stored chunk metadata, requests are routed rule-first to four specialist agents
+with a Granite classification fallback, and every number is computed deterministically
+rather than by the model. [Live demo](https://nutrimind-ai-0rby.onrender.com).
 
-## Technical skills
+- **Tested:** 472 automated tests at 91% line coverage. CI runs lint, the suite, migrations
+  against a real PostgreSQL server, and a boot check of the production Docker image on
+  every push.
+- **Multi-user by construction:** per-user isolation enforced down to vector search,
+  asynchronous document ingestion, CSRF protection, a nonce-based Content-Security-Policy,
+  rate limiting, and account export and deletion.
+- **Deployed** on Render in IBM Live mode, with its limits documented: one process by
+  design, password-reset links not emailed, no error alerting.
 
-**Languages** — Python, SQL, JavaScript, HTML/CSS
+`Python` `Flask` `IBM watsonx.ai` `Granite` `RAG` `ChromaDB` `SQLAlchemy` `PostgreSQL` `Docker` `pytest`
 
-**AI & LLMs** — IBM watsonx.ai, Granite, RAG, ChromaDB, embeddings, prompt engineering, agent routing
+### [VeriQA](https://github.com/datapiratepy/veriqa) · selective question answering · VTU team project
 
-**ML & data** — scikit-learn, Pandas, NumPy, EDA, classification, model evaluation, class imbalance, Monte Carlo
+A CPU-only question-answering system that declines to answer when its calibrated risk of
+being wrong is too high, built with Harsh Ranjan and Manish Kumar. **My part** was the
+extractive reader and the reliability layer: 16 retrieval, reader and cross-passage
+agreement signals, a gradient-boosted risk model with isotonic calibration, and the
+baselines it is measured against.
 
-**Backend & quality** — Flask, REST APIs, SQLAlchemy, SSE, pytest, GitHub Actions, Git
+- Adding retrieval and agreement signals to a reader-only calibrator raised
+  error-prediction ROC-AUC from 0.524 to 0.639 on 3,585 held-out SQuAD 2.0 questions; the
+  bootstrap interval for the risk–coverage improvement excludes zero.
+- Three of the seven pass/fail gates failed, because the classical (non-transformer)
+  reader is weak at 11% base accuracy. The README reports them as failures.
+- Re-running the full pipeline from the raw data reproduces every frozen result table
+  exactly; only host-dependent latency changes.
 
-**Data & BI** — Google BigQuery, SQLite, Power BI, DAX, Matplotlib, Seaborn
+`Python` `scikit-learn` `gradient boosting` `isotonic calibration` `SQuAD 2.0` `selective prediction`
 
-**Web & tools** — Next.js, TypeScript, Tailwind, IBM Cloud, Jupyter, Colab, VS Code
+### [Redrob Ranker](https://github.com/datapiratepy/redrob-ranker) · deterministic candidate ranking
 
----
+Ranks the top 100 of 100,000 candidate profiles against a job description, built for the
+Redrob × Hack2Skill INDIA.RUNS challenge. Measured at about 40 seconds and 21 MB of peak
+memory on CPU, with byte-identical output across runs. There is no ML model, by design:
+an embedding layer was evaluated and rejected, and the reasoning is documented.
 
-## Featured projects
+`Python` `algorithm design` `feature engineering` `deterministic systems`
 
-### [NutriMind AI](https://github.com/datapiratepy/NutriMind-AI)
+### Open-source contribution · [Lamatic AgentKit, PR #408](https://github.com/Lamatic/AgentKit/pull/408)
 
-A Flask app on IBM watsonx.ai Granite models that answers nutrition questions from documents you upload. Retrieval is citation-backed: the citation list is assembled in Python from stored metadata, so the model cannot fabricate a source. Built during my IBM SkillsBuild internship, with 156 automated tests at 88% coverage in CI.
+A roster-rules auditor template submitted to Lamatic's open-source AgentKit for the
+AgentKit Challenge. LLM nodes transcribe a roster and plain-English scheduling rules; a
+deterministic JavaScript evaluator does all the arithmetic, checks every value against the
+line it came from, and returns `INCOMPLETE` rather than guessing.
+**Status: open pull request under review, not yet merged (September 2026).**
 
-`Python` `IBM watsonx.ai` `Granite` `RAG` `ChromaDB` `Flask` `pytest`
+## Earlier data and ML projects
 
-### [Redrob Ranker](https://github.com/datapiratepy/redrob-ranker)
+- [Customer Churn Analysis](https://github.com/datapiratepy/customer-churn-analysis):
+  logistic-regression churn classifier on 7,032 Telco records. Class balancing raised
+  churn recall from 0.52 to 0.79 at 0.50 precision, and the repository documents an
+  encoding bug and its fix.
+- [Financial Markets Analytics](https://github.com/datapiratepy/financial-markets-analytics):
+  Monte Carlo portfolio optimisation under Modern Portfolio Theory for four large-cap
+  stocks.
+- [Climate & Energy Analytics](https://github.com/datapiratepy/climate-energy-analytics):
+  SQL analysis of global CO₂ emissions in Google BigQuery, visualised in Power BI.
 
-Ranks the top 100 of a 100,000-profile pool against a job description, on CPU alone and in under a minute — built for the Redrob × Hack2Skill INDIA.RUNS challenge. Scoring is interpretable and fully deterministic: every placement is explainable from the input, and repeated runs are byte-identical. No machine-learning model in it, by design; embeddings were evaluated and rejected, with the reasoning documented.
+## Skills
 
-`Python` `Algorithm Design` `Feature Engineering` `Deterministic Systems`
+- **AI and ML:** LLM applications on IBM watsonx.ai (Granite) · RAG, embeddings, ChromaDB ·
+  prompt design · scikit-learn: classification, gradient boosting, isotonic calibration ·
+  model evaluation
+- **Engineering:** Python, SQL, JavaScript · Flask, SQLAlchemy, Alembic, SQLite and
+  PostgreSQL · pytest, GitHub Actions, Docker, Git
+- **Data:** Pandas, NumPy, Matplotlib, Google BigQuery, Power BI
 
-### [Customer Churn Analysis](https://github.com/datapiratepy/customer-churn-analysis)
+## Education and credentials
 
-A logistic-regression churn classifier on 7,032 Telco records — cleaning, one-hot encoding, and scaling fitted on the training split only. Class balancing raised churn-class recall from 0.52 to 0.79 at 0.50 precision, a trade made deliberately for a retention use case. Results ship as a Power BI dashboard.
-
-`Python` `scikit-learn` `Pandas` `Power BI` `DAX`
-
-### [Financial Markets Analytics](https://github.com/datapiratepy/financial-markets-analytics)
-
-5,000 Monte Carlo simulations across eight years of AAPL, MSFT, GOOGL and AMZN data (2018–2025, 2,011 trading days), improving the Sharpe ratio from 0.87 to 0.92 and plotting the Efficient Frontier.
-
-`Python` `Pandas` `NumPy` `Matplotlib`
-
-### [Climate & Energy Analytics](https://github.com/datapiratepy/climate-energy-analytics)
-
-SQL analysis of global CO₂ emissions in BigQuery using Our World in Data — filtering, decade aggregation and a scalar subquery for top emitters, with GDP-versus-emissions comparisons in Power BI — a visual comparison, not a computed correlation.
-
-`SQL` `Google BigQuery` `Power BI`
-
----
-
-## Certifications
-
-- **Google Data Analytics Professional Certificate** — Google / Coursera, 2025
-- **IBM SkillsBuild AI & Cloud Internship** — Edunet Foundation with AICTE, 2026
-- **Redrob × Hack2Skill INDIA.RUNS Data & AI Challenge** — 2026
-
-## Education
-
-**B.E., Computer Science Engineering** — AMC Engineering College, Bengaluru · 2023–2027
-
-## Open to opportunities
-
-Looking for **AI/ML, Generative AI, Data Science and Python engineering internships**, and **graduate software engineering roles** from 2027. Bengaluru or remote.
+- **B.E., Computer Science and Engineering**, AMC Engineering College (VTU), Bengaluru,
+  2023–2027
+- **IBM SkillsBuild AI & Cloud internship** (Edunet Foundation with AICTE), 2026:
+  NutriMind AI began as its project
+- **Google Data Analytics Professional Certificate** (Google / Coursera), 2025
